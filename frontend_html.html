@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+     <link rel="stylesheet" href="frontend_css.css">
+     <script src="frontend_js.js"></script>
+</head>
+<body style="background-color: rgb(252, 253, 252)" onload="getStudents()">
+	<CENTER><h2>Student Management System</h2></CENTER>
+    <!--Table-->
+    <table>
+        <!--Row-1-->
+        <tr>
+            <!--Column-1-->
+            <td>
+                <!--Form-->
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                	<h3>Student Form</h3>
+                  <!--div-1-->
+                    <div>
+                        <label>Full Name</label>
+                        <!--Validation Error-->
+                        <label class="validation-error hide" id="userNamevalidationError">This field is required</label>
+                        <!--Input User Name-->
+                        <input type="text" name="userName" id="userName" placeholder="Enter the Full Name">
+                    </div>
+                    <!--div-2-->
+                    <div>
+                        <label>Rollno</label>
+                        <!--Validation Error-->
+                        <label class="validation-error hide" id="rollNovalidationError" >This field is required</label>
+                        <!--Input Roll No-->
+                        <input type="text" name="rollNo" id="rollNo" placeholder="Enter the Roll number">
+                    </div>
+                    <!--div-3-->
+                    <div>
+                        <label>DOB</label>
+                        <!--Validation Error-->
+                        <label class="validation-error hide" id="DOBvalidationError">This field is required</label>
+                       <!--Input Student Class-->
+                        <input type="date" name="DOB" id="DOB">
+                    </div>
+                    <!--div-4-->
+                    <div>
+                        <label>Gender</label>
+                        <!--Validation Error-->
+                        <label class="validation-error hide" id="GendervalidationError">This field is required</label>
+                        <label for="Gender"></label>
+
+                        <select name="Gender" id="Gender">
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    <!--div-5-->
+                    <div>
+                        <label>Phone Number</label>
+                        <!--Validation Error-->
+                        <label class="validation-error hide" id="PhonevalidationError">This field is required</label>
+                        <!--Input Age-->
+                        <input type="tel" name="Phone" id="Phone" maxlength="12" minlength="12" placeholder="0123-456-789" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}">
+                    </div>
+                    <!--div-6-->
+                    <div class="form-action-buttons">
+                        <!--Input Button-->
+                        <input style="background-color: rgb(252, 249, 249); color: rgb(69, 65, 65);" type="submit" value="Submit">
+                    </div>
+                </form>
+            </td>
+            <!--Column-2-->
+            <td>
+                <!--Nested Table-->
+                <table class="list" id="fromdb" style="background-color: rgb(74, 71, 71); color: white;">
+                    <!--Table Head-->
+                    <thead>
+                        <!--Row-2-->
+                        <tr>
+                            <th>Full Name</th>
+                            <th> Roll no</th>
+                            <th>DOB</th>
+                            <th>Gender</th>
+                            <th>Phone Number</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <!--Table Body-->
+                    <tbody id="myTable">
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>registration form</title>
+</head>
+<body >
+    <table>
+        <!--Row-1-->
+        <tr>
+
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                	<h3>Student Form</h3>
+                  <!--div-1-->
+                    <div>
+                        <label>Full Name</label>
+                        
+                        <input type="text" name="userName" id="userName" placeholder="Enter the user Name">
+                    </div>
+                    <!--div-2-->
+                    <div>
+                        <label>Rollno</label>
+                        <input type="text" name="rollNo" id="rollNo" placeholder="Enter the Roll number">
+                    </div>
+                    <!--div-3-->
+                    <div>
+                        <label>Student Class</label>
+                        <input type="text" name="stdClass" id="stdClass" placeholder="Enter the Student Class">
+                    </div>
+                    <!--div-4-->
+                    <div>
+                        <label>Total Subject</label>
+                        <input type="number" name="tsub" id="tsub" placeholder="Enter the Total Subjects">
+                    </div>
+                    <!--div-5-->
+                    <div>
+                        <label>Age</label>
+                        <input type="number" name="age" id="age" placeholder="Enter the Age">
+                    </div>
+                    <!--div-6-->
+                    <div class="form-action-buttons">
+                        <!--Input Button-->
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+          
+        </tr>
+    </table>
+
+
+   </style>
+   <script>
+ 
+var selectedRow = null
+
+
+// Form Submit Function
+function onFormSubmit() {
+    var formData = readFormData();
+    insertNewRecord(formData);
+    resetForm();
+    
+}
+
+function readFormData(){
+    var formData = {};
+    formData["userName"]= document.getElementById("userName").value;
+    formData["rollNo"]= document.getElementById("rollNo").value;
+    formData["dob"]= document.getElementById("DOB").value;
+    formData["gender"]= document.getElementById("Gender").value;
+    formData["phone"]= document.getElementById("Phone").value;
+
+    console.log(formData);
+    return formData;
+}
+
+function resetForm() {
+    document.getElementById("userName").value = "";
+    document.getElementById("rollNo").value = "";
+    document.getElementById("DOB").value = "";
+    document.getElementById("Gender").value = "";
+    document.getElementById("Phone").value = "";
+    selectedRow = null;
+}
+
+//post req
+async function insertNewRecord(formData){
+
+console.log(formData)
+
+var requestBody = JSON.stringify(formData);
+
+console.log(requestBody)
+
+console.log("Entered insert record function")
+
+//Http calls
+    const response = await fetch('http://localhost:3000/addstudent', {
+      method: 'POST',
+      body: requestBody, // string or object
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const myJson = await response.json(); //extract JSON from the http response
+    // do something with myJson
+    console.log(myJson)     
+}
+   </script>
+</body>
+</html>
+                                                
